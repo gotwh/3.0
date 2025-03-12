@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>汇联平安活动领取页面</title>
+    <style>
+        body {
+            font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #ff6b6b, #ffa64d);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #fff;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            color: #333;
+        }
+        h1 {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin-bottom: 20px;
+        }
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-size: 14px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .input-group input:focus {
+            border-color: #ff6b6b;
+        }
+        .button {
+            background: linear-gradient(135deg, #ff6b6b, #ffa64d);
+            color: #fff;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #777;
+        }
+        .success-page {
+            display: none;
+        }
+        .loading {
+            display: none;
+            font-size: 18px;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin-top: 20px;
+        }
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border: 2px solid #ff6b6b;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .congrats {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin-bottom: 20px;
+        }
+        .reward {
+            font-size: 36px;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin-bottom: 20px;
+        }
+        .note {
+            font-size: 14px;
+            color: #555;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="main-page">
+    <h1>汇联平安活动领取页面</h1>
+    <p style="color: #555;">本活动由咪咕文化科技有限公司推出，活动真实有效。</p>
+    <div class="input-group">
+        <label for="name">请输入您的名字：</label>
+        <input type="text" id="name" placeholder="请输入名字">
+    </div>
+    <div class="input-group">
+        <label for="code">请输入兑换码：</label>
+        <input type="text" id="code" placeholder="请输入兑换码">
+    </div>
+    <button class="button" onclick="checkCode()">立即领取</button>
+    <div class="footer">
+        <p>请确保输入的兑换码正确，否则无法领取奖励。</p>
+    </div>
+    <div class="loading" id="loading">正在领取中，请稍候...</div>
+</div>
+
+<div class="container success-page" id="success-page">
+    <div class="congrats">恭喜您！</div>
+    <div class="reward">9800元</div>
+    <p>您的奖励已成功领取！</p>
+    <div class="note">
+        <p>恭喜客户ID79630领取成功，请截图联系客服（帕丽旦木·阿不来提）缴纳手续费核销领取奖励。</p>
+    </div>
+</div>
+
+<script>
+    function checkCode() {
+        const code = document.getElementById('code').value;
+        if (code === '16698004') {
+            // 显示加载动画
+            document.getElementById('loading').style.display = 'block';
+            // 模拟加载过程
+            setTimeout(() => {
+                document.getElementById('main-page').style.display = 'none';
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('success-page').style.display = 'block';
+            }, 2000); // 2秒后跳转到成功页面
+        } else {
+            alert('兑换码错误，请重新输入！');
+        }
+    }
+</script>
+
+</body>
+</html>
